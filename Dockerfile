@@ -1,4 +1,5 @@
 # docker/Dockerfile
+
 FROM python:3.9.0-slim
 
 ENV USER=uv-example-user \
@@ -15,10 +16,17 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 COPY --from=ghcr.io/astral-sh/uv:0.5.5 /uv /uvx /bin/
 
 ENV APP_DIR=/home/$USER/src
-
 WORKDIR $APP_DIR
 
+RUN --mount=type=cache,target=/home/$USER/.cache/uv \
+    --mount=type=bind,source=src/uv.lock,target=uv.lock \
+    --mount=type=bind,source=src/pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project
+
 COPY . $APP_DIR
+
+RUN --mount=type=cache,target=/home/$USER/.cache/uv \
+    uv sync --frozen
 
 ENV PYTHONPATH=$APP_DIR
 
