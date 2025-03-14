@@ -19,8 +19,8 @@ ENV APP_DIR=/home/$USER/src
 WORKDIR $APP_DIR
 
 RUN --mount=type=cache,target=/home/$USER/.cache/uv \
-    --mount=type=bind,source=src/uv.lock,target=uv.lock \
-    --mount=type=bind,source=src/pyproject.toml,target=pyproject.toml \
+    --mount=type=bind,source=./uv.lock,target=uv.lock \
+    --mount=type=bind,source=./pyproject.toml,target=pyproject.toml \
     uv sync --frozen --no-install-project
 
 COPY . $APP_DIR
