@@ -1,0 +1,13 @@
+[project]
+name = "backgroundremover"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9,<3.10"
+dependencies = [
+    "fastapi[standard]>=0.115.11",
+    "numpy>=2.0.2",
+    "onnxruntime>=1.19.2",
+    "pillow>=11.1.0",
+    "rembg>=2.0.61",
+]
