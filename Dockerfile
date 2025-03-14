@@ -1,5 +1,5 @@
 # docker/Dockerfile
-FROM python:3.13.0-slim
+FROM python:3.9.0-slim
 
 ENV USER=uv-example-user \
     PYTHONDONTWRITEBYTECODE=1 \
@@ -18,7 +18,7 @@ ENV APP_DIR=/home/$USER/src
 
 WORKDIR $APP_DIR
 
-COPY src $APP_DIR
+COPY . $APP_DIR
 
 ENV PYTHONPATH=$APP_DIR
 

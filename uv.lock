@@ -50,6 +50,7 @@ dependencies = [
     { name = "onnxruntime" },
     { name = "pillow" },
     { name = "rembg" },
+    { name = "uvicorn" },
 ]
 
 [package.metadata]
@@ -59,6 +60,7 @@ requires-dist = [
     { name = "onnxruntime", specifier = ">=1.19.2" },
     { name = "pillow", specifier = ">=11.1.0" },
     { name = "rembg", specifier = ">=2.0.61" },
+    { name = "uvicorn", specifier = ">=0.34.0" },
 ]
 
 [[package]]
